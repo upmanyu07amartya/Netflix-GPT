@@ -9,7 +9,12 @@
 -Form Validation and useRef
 -Firebase setup
 -Deploy app using Firebase
-- Create SignUp user in Firebase
+-Create SignUp user in Firebase
+-Implement sign in api from Firebase
+-Setup redux store with userSlice
+-Implemented SignOut
+-Update Profile API call
+
 
 
 

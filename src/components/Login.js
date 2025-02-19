@@ -64,7 +64,6 @@ const Login = () => {
       signInWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log("success", user);
         })
         .catch((error) => {
           const errorCode = error.code;

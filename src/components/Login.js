@@ -51,7 +51,7 @@ const Login = () => {
                 photoURL: photoURL,
               })
             );
-            navigate("/browse");
+        
           });
         })
         .catch((error) => {
@@ -65,7 +65,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("success", user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

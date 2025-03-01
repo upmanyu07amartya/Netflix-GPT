@@ -26,6 +26,9 @@
 -Embedded Youtube video
 -Build Secondary Component with all data 
 -GPT Button in header
+-GPT Search Page
+-GPT Search Bar
+-Multi-language Feature
 
 
 

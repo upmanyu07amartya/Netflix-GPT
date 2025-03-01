@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { Search } from "lucide-react";
+import { Home, Search } from "lucide-react";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import { changeLanguage } from "../utils/config";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -49,6 +52,11 @@ const Header = () => {
         // An error happened.
       });
   };
+
+  const handleLanguageChange = (e) => {
+    console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  };
   return (
     <div className="absolute top-0  w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between ">
       <img
@@ -58,12 +66,34 @@ const Header = () => {
       />
       {user && (
         <div className="flex p-2">
+          {showGptSearch && (
+            <select
+              className="p-2 bg-gray-900 text-white m-3 rounded-lg"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+
           <button
             onClick={handleGptSearch}
             className="p-2 m-3 bg-white text-black rounded-lg flex"
           >
-            <Search className="mr-2" size={22} />
-            GPT Search
+            {!showGptSearch ? (
+              <>
+                <Search className="mr-2" size={22} />
+                GPT Search
+              </>
+            ) : (
+              <>
+              <Home className="mr-2" size={22}/>
+              Home
+              </>
+            )}
           </button>
           <img
             className="w-10 h-10 m-3"

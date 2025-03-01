@@ -24,7 +24,8 @@
 -Fetch data for Trailer video
 -Update store with trailer
 -Embedded Youtube video
--Build Secondary Component
+-Build Secondary Component with all data 
+-GPT Button in header
 
 
 
